@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Proyecto con javascript</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link id="theme" rel="stylesheet" href="css/green.css">
+    <!-- Moment fechas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
+    <!--  JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- SLIDER PLUGIN -->
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <!-- Mis scripts -->
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <div id="selector-theme">
+      <div id="to-green"></div>
+      <div id="to-blue"></div>
+      <div id="to-red"></div>
+    </div>
+    <section id="global">
+
+<!-- Cabecera -->
+
+      <header>
+        <div id="logo">
+          <h1>Proyecto JS</h1>
+        </div>
+        <div class="clearfix"></div>
+        <nav id="menu">
+          <ul>
+            <li><a href="proyectojavascript2.html">Inicio</a></li>
+            <li><a href="reloj.html">Reloj</a></li>
+            <li><a href="about.html">Sobre mi</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+<!-- Slider -->
+      <div id="Slider">
+        <div class="bxslider">
+          <div><img src="img/hojas.jpg" width="1200px" title="hojas"></div>
+          <div><img src="img/rojo.jpg" width="1200px" title="rojo"></div>
+          <div><img src="img/cielo.jpg" width="1200px" title="cielo"></div>
+        </div>
+      </div>
+
+<!-- Contenido -->
+      <section id="content">
+        <div id="posts">
+          <!-- aca se cargan los post desde el archivo json creado en js -->
+        </div>
+
+      <aside id="aside">
+        <div id="about">
+          <h4><span>¿Quien soy?</span></h4>
+          <img src="img/caracol.jpg" alt="caracol">
+          <p>
+             in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+
+        <div id="login">
+          <h4><span>Identificate</span></h4>
+          <form class="" action="index.html" method="post">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="form_name">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" value="">
+
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" value="">
+            <input type="submit" value="Entrar">
+          </form>
+        </div>
+
+      </aside>
+      <div class="clearfix"></div>
+    </section>
+
+  </section>
+    <footer>
+    Curso de Javascript &copy
+    <a href="#" class="subir">Ir arriba</a>
+    </footer>
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+  </body>
+</html>
