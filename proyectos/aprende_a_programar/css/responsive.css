@@ -1,5 +1,9 @@
 
-@media (max-width:1250px) {
+@media (max-width:1450px) {
+  
+  #btn-menu {
+    visibility: hidden;
+  }
   .wrap{
     width: 90%;
     margin: 0 auto;
@@ -297,6 +301,7 @@
 
 @media (max-width: 432px){
 
+
   #header{
     height: auto
   }
@@ -347,4 +352,32 @@
     margin-top: 14px;
 
   }
+}
+
+@media (max-width: 425px){
+  #logo {
+    display: none;
+  }
+
+  #menu {
+    display: flex;
+  }
+
+  #menu ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  #menu ul li {
+    display: block;
+    margin: unset;
+    font-size: medium;
+    width: unset;
+  }
+  
+  .ul-menu {
+    align-items: center;
+  }
+
 }

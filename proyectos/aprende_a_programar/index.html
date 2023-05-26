@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-with, user scalable=no initial-scale=1.0">
     <title>maquetacion Web2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylesheets.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="icon" href="img/linux.png">
@@ -13,21 +14,21 @@
     <header id="header">
       <div class="wrap">
         <div id="logo">
-          <!-- <span class="gear">S</span> -->
-          <h3>Portafolio</h3>
+          <a href="../../index.html"><h3>Portafolio</h3></a>
         </div>
 
-      <nav id="menu">
-        <ul>
-          <li><a href="#">INICIO</a></li>
-          <li><a href="#">BLOG</a></li>
-          <li><a href="#">FORMACION</a></li>
-          <li><a href="#">CONTACTO</a></li>
-        </ul>
-      </nav>
-
-    </div>
-
+        <nav id="menu">
+          <!-- <span class="material-symbols-outlined" id="btn-menu">
+            menu
+          </span> -->
+          <ul class="ul-menu">
+            <li><a href="../../index.html">INICIO</a></li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">FORMACION</a></li>
+            <li><a href="#">CONTACTO</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <!-- Fin de cabecera -->
 
@@ -47,31 +48,41 @@
     <div id="cards">
 
       <div class="card">
-        <p class="icon">H</p>
+        <span class="material-symbols-outlined icon">
+          travel_explore
+          </span>
         <h2 class="category">Desarrollo Web</h2>
         <p class="description">Aprende los principales lenguajes para desarrollar webs ¡Conviertete en un webmaster!</p>
       </div>
 
       <div class="card">
-        <p class="icon">_</p>
+        <span class="material-symbols-outlined icon">
+          terminal
+          </span>
         <h2 class="category">Linea de comandos</h2>
         <p class="description">Aprende a usar la terminal de linux</p>
       </div>
 
       <div class="card">
-        <p class="icon">S</p>
+        <span class="material-symbols-outlined icon">
+          settings
+          </span>
         <h2 class="category">Harware</h2>
         <p class="description">Conoce los entresijos del hardware</p>
       </div>
 
       <div class="card">
-        <p class="icon">u</p>
+        <span class="material-symbols-outlined icon">
+          signal_cellular_alt
+          </span>
         <h2 class="category">Redes e Internet</h2>
         <p class="description">Aprende a configurar y administrar redes informaticas y servidores</p>
       </div>
 
       <div class="card">
-        <p class="icon">a</p>
+        <span class="material-symbols-outlined icon">
+          Database
+          </span>
         <h2 class="category">Bases de datos</h2>
         <p class="description">Aprende a montar y administrar bases de datos</p>
       </div>
@@ -87,9 +98,13 @@
 
     <h3>BUSCAR</h3>
     <div id="search">
-      <form class="" action="index.html" method="post">
+      <form class="search-form" action="index.html" method="post">
         <input type="text" name="" value="">
-        <input type="button" class="icon" name="" value="L">
+          <button class="btn-search">
+            <span class="material-symbols-outlined" id="serch-icon">
+              search
+            </span>
+          </button>
       </form>
 
     </div>
@@ -97,10 +112,18 @@
     <h3>LOGIN</h3>
     <div id="login" class="aside-box">
       <form class="" action="index.html" method="post">
-        <label id="user" class="icon">U</label>
+        <label id="user">
+          <span class="material-symbols-outlined icon">
+            person
+          </span>
+        </label>
         <input type="email" name="" value="">
 
-        <label id="password" class="icon">w</label>
+        <label id="password">
+          <span class="material-symbols-outlined icon">
+            Lock
+          </span>
+        </label>
         <input type="password" name="" value="">
 
         <input type="submit" name="" value="entrar">
@@ -113,33 +136,19 @@
 
     <h3>REDES SOCIALES</h3>
     <div id="social" class="aside-box">
-      <div class="twitter">
-        <a href="#" class="icon">t</a>
+      <div class="github">
+        <a href="#"><img src="./img/github.svg" alt="github" class="social-icon"></a>
         <p class="overlay">
-          Twitter
+          Github
         </p>
       </div>
 
-      <div class="facebook">
-        <a href="#" class="icon">f</a>
+      <div class="linkedin">
+        <a href="#"><img src="./img/linkedin.svg" alt="github" class="social-icon"></a>
         <p class="overlay">
-          Facebook
+          LinkedIn
         </p>
       </div>
-
-      <div class="youtube">
-        <a href="#" class="icon">y</a>
-        <p class="overlay">
-          Youtube
-        </p>
-      </div>
-    </div>
-
-    <!-- <h3>PATROCINADORES</h3>
-    <div id="sponsor" class="aside-box">
-
-    </div> -->
-
   </aside>
 <!-- FIN BARRA LATERAL -->
 
@@ -288,7 +297,7 @@
             <img src="img/chrome.png" alt="logo chrome" title="chrome">
           </a>
           <a href="#">
-            <img src="img/opera.png" alt="logo opera" title="opera">
+            <!-- <img src="img/opera.png" alt="logo opera" title="opera"> -->
           </a>
           <a href="#">
             <img src="img/safari.png" alt="logo safari" title="safari">
@@ -309,6 +318,6 @@
 </footer>
 
 <!-- FIN PIE DE PAGINA -->
-
+    <script src="./main.js"></script>
   </body>
 </html>
