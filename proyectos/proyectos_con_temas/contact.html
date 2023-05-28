@@ -57,7 +57,7 @@
           <!-- cargar formulario -->
           <h2>Contacto</h2>
 
-          <form id="form_contact" action="" method="post">
+          <form id="form_contact" action="" method="get">
             <label for="name">Nombre</label>
             <input type="text" name="name" data-validation="alphanumeric">
             <label for="surname">Apellido</label>
@@ -70,9 +70,9 @@
               <option value="woman">Mujer</option>
             </select>
             <label for="date">Fecha de nacimiento</label>
-            <input type="text" name="date" data-validation="date" data-validation-format="dd/mm/yyyy">
+            <input type="text" name="date" data-validation="date" data-validation-format="dd/mm/yyyy" id="fecha">
             <label for="year">Edad</label>
-            <input type="number" name="year" data-validation="number">
+            <input type="number" name="year" data-validation="number" id="edad">
             <input type="submit" value="enviar">
           </form>
 
@@ -90,7 +90,7 @@
 
         <div id="login">
           <h4><span>Identificate</span></h4>
-          <form class="" action="index.html" method="post">
+          <form class="" action="contact.html" method="get">
             <label for="name">Nombre</label>
             <input type="text" name="name" id="form_name">
 
@@ -109,7 +109,7 @@
 
   </section>
     <footer>
-    Curso de Javascript &copy
+    Dionicio Hurtado &copy
     <a href="#" class="subir">Ir arriba</a>
     </footer>
     <!-- <script type="text/javascript" src="js/main.js"></script> -->

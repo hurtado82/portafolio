@@ -13,7 +13,6 @@ class Juego {
     this.inicializar();
     this.generarSecuencia();
     setTimeout(this.siguienteNivel, 500);
-    debugger
   }
   inicializar() {
     this.siguienteNivel = this.siguienteNivel.bind(this); //bind enlaza this con el objeto de la clase no permite modificarlo
