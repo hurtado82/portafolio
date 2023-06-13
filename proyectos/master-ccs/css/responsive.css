@@ -1,0 +1,7 @@
+@media (max-width: 330) {
+  
+  #header {
+    display: flex;
+    width: unset;
+  }
+}
