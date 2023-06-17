@@ -1,55 +1,90 @@
 let v2 = 0
 let v1 = 0
-let valor = 0
+let valor = "0"
 let mas = false
 let menos = false
 let multi = false
 let div = false
-let conteo = 0
+let porcentaje = false
 let show = document.querySelector("#show")
 
 const resetOperator = () => {
-  mas = !true
-  menos = !true
-  multi = !true
-  div = !true
+  mas = false
+  menos = false
+  multi = false
+  div = false
+  porcentaje = false
+}
+
+const sacarPorcentaje = (value1, value2) => {
+  let result = ( parseFloat(v1) / 100 ) * v2
+  console.log(result)
+
+  if (mas) {
+    show.value = parseFloat(v1) + parseFloat(result)
+  }
+  if (menos) {
+    show.value = parseFloat(v1) - parseFloat(result)
+  }
+  if (multi) {
+    show.value = result
+  }
+  if (div) {
+    show.value = parseFloat(v1) * result
+  }
+  resetOperator()
+}
+
+const totalOperation = (value1, value2) => {
+  show.value = parseFloat(value1) + parseFloat(value2)
 }
 
 const equalOperator = () => {
 
-  if (mas) {
+  if (mas || mas && porcentaje) {
     show.value = parseFloat(v1) + parseFloat(v2)
   }
-  if (menos) {
+  if (menos || menos && porcentaje) {
     show.value = parseFloat(v1) - parseFloat(v2)
   }
-  if (multi) {
+  if (multi || multi && porcentaje) {
     show.value = parseFloat(v1) * parseFloat(v2)
   }
-  if (div) {
+  if (div || div && porcentaje) {
     show.value = parseFloat(v1) / parseFloat(v2)
+  }
+  if (porcentaje) {
+    show.value = sacarPorcentaje()
   }
 }
 
 const btnEvent = (e) => {
-  console.log(e)
-  valor+= e.target.value
-  show.value = valor.slice(1)
-  if(v1) {
-    v2 = show.value
+
+  if(valor?.length <= 10) {
+    valor+= e.target.value
+    show.value = valor.slice(1)
+    if(v1) v2 = show.value
+    console.log(show.value.length)
   }
 }
+//prueba show
+const showResult = (totalResult) => {
+  if(valor?.length <= 10) {
+    show.value = totalResult
+  }
+}
+
 
 const operatorsKeys = () => {
   equalOperator()
   v1 = show.value
-  valor = 0
+  valor = "0"
   resetOperator()
 }
 
 var boton1 = document.querySelector("#number1")
-// boton1.addEventListener("click", (e) => btnEvent(e))
-boton1.addEventListener("onkeyup", (e) =>  console.log(e.target) )
+boton1.addEventListener("click", (e) => btnEvent(e))
+// boton1.addEventListener("onkeyup", (e) =>  console.log(e.target) )
 
 var boton2 = document.querySelector("#number2")
 boton2.addEventListener("click", (e) => btnEvent(e))
@@ -113,6 +148,14 @@ botonDiv.addEventListener("click", function(){
   }
 })
 
+var botonPorcentaje = document.querySelector("#numberPorcien")
+botonPorcentaje.addEventListener("click", function(){
+  if(show.value !== "0") {
+    porcentaje = true
+    sacarPorcentaje()
+  }
+})
+ 
 var botonEqual = document.querySelector("#numberIgual")
 botonEqual.addEventListener("click", equalOperator )
   
@@ -120,7 +163,7 @@ var botonCE = document.querySelector("#numberCE")
 botonCE.addEventListener("click", function(){
   show.value = 0
   v2 = 0
-  valor = 0
+  valor = "0"
 })
 
 var botonC = document.querySelector("#numberC")
@@ -128,6 +171,6 @@ botonC.addEventListener("click", function(){
   resetOperator()
   v2 = 0
   v1 = 0
-  valor = 0
+  valor = "0"
   show.value = 0
 })

@@ -39,6 +39,12 @@
   font-size: 50px;
   text-align: right;
   overflow: hidden;
+  border: 1px solid black;
+}
+
+#show:focus-visible {
+  outline: none;
+  border: 1px solid black;
 }
 
 #number{
