@@ -33,6 +33,14 @@
   justify-content: center;
 }
 
+#sign {
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  font-weight: 900;
+  text-shadow: .5px .5px;
+}
+
 #show {
   width: 99%;
   height: 80%;
@@ -51,6 +59,7 @@
   width: 95%;
   height: 80%;
   margin: auto;
+  position: relative;
 }
 
 .contentButton{
