@@ -57,11 +57,20 @@ const equalOperator = (equalkey) => {
   if(equalkey && sign !== "") sign.innerHTML = ""
 }
 
-const numbers = /[0-9]/g
+const numbers = /[0-9\.]/
 const btnEvent = (e) => {
-  if(initialValue?.length <= 10) {
-    initialValue+= e.target.value
-    show.value = initialValue.slice(1)
+
+  if(initialValue?.length <= 10) { 
+    if (numbers.test(e.key)) {
+      if(e.key === "." && point) return
+      if(e.key === ".") point = true
+      initialValue+= e.key
+      show.value = initialValue.slice(1) 
+    }
+    if(e.type !== "keyup") {
+      initialValue+= e.target.value
+      show.value = initialValue.slice(1)
+    }
     if(v1) v2 = parseFloat(show.value)
   }
 }
