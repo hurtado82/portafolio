@@ -75,6 +75,10 @@
   margin: 5px;
 }
 
+.button:active:focus {
+  outline: none;
+}
+
 .button input{
   border: 1px solid darkblue;
   border-radius: 15px;
