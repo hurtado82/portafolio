@@ -18,12 +18,7 @@ const resetOperator = () => {
   percentage = false
   point = false
 }
-// window.addEventListener("keydown", function(event){
-//   if (event.keyCode == 13){
-//       event.preventDefault();
-//       document.querySelector("#numberIgual").click()
-//   }
-// },false);
+
 const getPercentage = () => {
   let result = ( parseFloat(v1) / 100 ) * v2
   if (addition) {
@@ -39,9 +34,10 @@ const getPercentage = () => {
     showResult(parseFloat(v1) * result)
   }
   resetOperator()
+  sign.innerHTML = ""
 }
 
-const equalOperator = (equalkey) => {
+const equalOperator = (resetSign) => {
   if (addition && v1 && v2) {
     showResult(v1 + v2)
   }
@@ -58,26 +54,23 @@ const equalOperator = (equalkey) => {
     show.value = getPercentage()
   }
   initialValue = "0"
-  if(equalkey && sign !== "") sign.innerHTML = ""
+  if(resetSign && sign !== "") sign.innerHTML = ""
+  v2 = 0
+  resetOperator()
 }
 
 const keyboardNumbers = /[0-9\.]/
 const keyboardOperators = /[\*\+\/\-]/
 
 const btnEvent = (e) => {
-  
-  console.log(e)
   if(initialValue?.length <= 10) { 
-    if (keyboardOperators.test(e.key)) {
-      keyboardHandlerOperators(e)
-    }
     if (keyboardNumbers.test(e.key)) {
       if(e.key === "." && point) return
       if(e.key === ".") point = true
       initialValue+= e.key
       show.value = initialValue.slice(1) 
     }
-    if(e.type !== "keypress") {
+    if(e.type !== "keydown") {
       initialValue+= e.target.value
       show.value = initialValue.slice(1)
     }
@@ -86,15 +79,17 @@ const btnEvent = (e) => {
 }
 
 const operatorsKeys = (e) => {
-  if (e.type === "keypress" && e.key !== "Enter") {
-    sign.innerHTML = e.key
-  }else if(e.type === "click"){
-    sign.innerHTML = e.target.value
+  if(show.value !== "0") {
+    if (e.type === "keypress" && e.key !== "Enter") {
+      sign.innerHTML = e.key
+    }else if(e.type === "click"){
+      sign.innerHTML = e.target.value
+    }
+    equalOperator()
+    v1 = parseFloat(show.value)
+    initialValue = "0"
+    resetOperator()
   }
-  equalOperator()
-  v1 = parseFloat(show.value)
-  initialValue = "0"
-  resetOperator()
 }
 
 const showResult = (value1) => {
@@ -109,28 +104,32 @@ const showResult = (value1) => {
   }
 }
 
-const keyboardHandlerOperators = (e) => {
-  if(show.value !== "0") {
-    operatorsKeys(e)
-      if(e.key === "+" || e.target.value === "+") addition = true
-      if(e.key === "-" || e.target.value === "-") subtraction = true
-      if(e.key === "*" || e.target.value === "*") multiplication = true
-      if(e.key === "/" || e.target.value === "/") division = true
-  }
-}
-
 const btn1 = document.querySelector("#number1")
 btn1.addEventListener("click", (e) => btnEvent(e))
-const btnbody = document.querySelector("body").
-addEventListener("keypress", (e) => {
-  if (e.keyCode === 13) {
+const btnbody = document.querySelector("body")
+btnbody.addEventListener("keydown", (e) => {
+
+  if (e.key === "Enter") {
     e.preventDefault()
-    equalOperator("=")
+    equalOperator(e)
+
+  } else if(keyboardOperators.test(e.key)) {
+
+    switch (e.key) {
+      case "+" : btnAddition.click()
+        break;
+      case "-" : btnSubtraction.click()
+        break;
+      case "*" : btnMultiplication.click()
+        break;
+      case "/": btnDivision.click()
+        break;
+      default: return  
+    }
+  } else {
+    btnEvent(e)
   }
-  btnEvent(e)
 })
-
-
 
 const btn2 = document.querySelector("#number2")
 btn2.addEventListener("click", (e) => {
@@ -168,16 +167,27 @@ btnPoint.addEventListener("click", (e) =>{
 })
 
 const btnAddition = document.querySelector("#numberSuma")
-btnAddition.addEventListener("click", (e) => keyboardHandlerOperators(e))
+btnAddition.addEventListener("click", (e) => {
+  operatorsKeys(e)
+  addition = true
+})
 
 const btnSubtraction = document.querySelector("#numberResta")
-btnSubtraction.addEventListener("click", (e) => keyboardHandlerOperators(e))
-
+btnSubtraction.addEventListener("click", (e) => {
+  operatorsKeys(e)
+  subtraction = true
+})
 const btnMultiplication = document.querySelector("#numberMulti")
-btnMultiplication.addEventListener("click", (e) => keyboardHandlerOperators(e))
+btnMultiplication.addEventListener("click", (e) => {
+  operatorsKeys(e)
+  multiplication = true
+})
 
 const btnDivision = document.querySelector("#numberDiv")
-btnDivision.addEventListener("click", (e) => keyboardHandlerOperators(e))
+btnDivision.addEventListener("click", (e) => {
+  operatorsKeys(e)
+  division = true
+})
 
 const btnPercentage = document.querySelector("#numberPorcien")
 btnPercentage.addEventListener("click", function(){
@@ -187,7 +197,7 @@ btnPercentage.addEventListener("click", function(){
 })
  
 const btnEqual = document.querySelector("#numberIgual")
-btnEqual.addEventListener("click", () => equalOperator("=") )
+btnEqual.addEventListener("click", (e) => equalOperator(e) )
   
 const btnCE = document.querySelector("#numberCE")
 btnCE.addEventListener("click", function(){
