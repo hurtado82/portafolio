@@ -27,6 +27,12 @@ class Juego {
     };
   }
 
+  reset() {
+    this.eliminarEventosClick()
+    this.generarSecuencia()
+    this.inicializar()
+  }
+
   toggleBtnEmpezar() {
     if (btnEmpezar.classList.contains("hide")) {
       btnEmpezar.classList.remove("hide");
@@ -129,11 +135,7 @@ class Juego {
   }
 
   perdioElJuego() {
-    swal("", "Lo lamento perdiste :(", "error").then(
-      this.eliminarEventosClick(),
-      this.generarSecuencia(),
-      this.inicializar(),
-      );
+    swal("", "Lo lamento perdiste :(", "error").then(this.reset());
   }
 }
 

@@ -1,5 +1,5 @@
-let v1 = 0
-let v2 = 0
+let v1 = 0       // first value entered
+let v2 = 0       // second value entered
 let initialValue = "0"
 let addition = false
 let subtraction = false
@@ -7,7 +7,7 @@ let multiplication = false
 let division = false
 let percentage = false
 let point = false
-const show = document.querySelector("#show")
+const showScreen = document.querySelector("#show")
 const sign = document.querySelector("#sign")
 
 const resetOperator = () => {
@@ -51,7 +51,7 @@ const equalOperator = (resetSign) => {
     showResult(v1 / v2)
   }
   if (percentage) {
-    show.value = getPercentage()
+    showScreen.value = getPercentage()
   }
   initialValue = "0"
   if(resetSign && sign !== "") sign.innerHTML = ""
@@ -68,25 +68,25 @@ const btnEvent = (e) => {
       if(e.key === "." && point) return
       if(e.key === ".") point = true
       initialValue+= e.key
-      show.value = initialValue.slice(1) 
+      showScreen.value = initialValue.slice(1) 
     }
     if(e.type !== "keydown") {
       initialValue+= e.target.value
-      show.value = initialValue.slice(1)
+      showScreen.value = initialValue.slice(1)
     }
-    if(v1) v2 = parseFloat(show.value)
+    if(v1) v2 = parseFloat(showScreen.value)
   }
 }
 
 const operatorsKeys = (e) => {
-  if(show.value !== "0") {
+  if(showScreen.value !== "0") {
     if (e.type === "keypress" && e.key !== "Enter") {
       sign.innerHTML = e.key
     }else if(e.type === "click"){
       sign.innerHTML = e.target.value
     }
     equalOperator()
-    v1 = parseFloat(show.value)
+    v1 = parseFloat(showScreen.value)
     initialValue = "0"
     resetOperator()
   }
@@ -96,16 +96,14 @@ const showResult = (value1) => {
   let total = value1
   
   if(value1.toString().length < 9) {
-    show.value = total
+    showScreen.value = total
   } else if(value1 % 1 === 0){
-    show.value = total.toExponential(4)
+    showScreen.value = total.toExponential(4)
   } else {
-    show.value = total.toFixed(1)
+    showScreen.value = total.toFixed(1)
   }
 }
 
-const btn1 = document.querySelector("#number1")
-btn1.addEventListener("click", (e) => btnEvent(e))
 const btnbody = document.querySelector("body")
 btnbody.addEventListener("keydown", (e) => {
 
@@ -129,7 +127,11 @@ btnbody.addEventListener("keydown", (e) => {
   } else {
     btnEvent(e)
   }
+  if(e.code === "Space") e.preventDefault()
 })
+
+const btn1 = document.querySelector("#number1")
+btn1.addEventListener("click", (e) => btnEvent(e))
 
 const btn2 = document.querySelector("#number2")
 btn2.addEventListener("click", (e) => {
@@ -191,7 +193,7 @@ btnDivision.addEventListener("click", (e) => {
 
 const btnPercentage = document.querySelector("#numberPorcien")
 btnPercentage.addEventListener("click", function(){
-  if(show.value !== "0") {
+  if(showScreen.value !== "0") {
     getPercentage()
   }
 })
@@ -201,7 +203,7 @@ btnEqual.addEventListener("click", (e) => equalOperator(e) )
   
 const btnCE = document.querySelector("#numberCE")
 btnCE.addEventListener("click", function(){
-  show.value = 0
+  showScreen.value = 0
   v2 = 0
   initialValue = "0"
 })
@@ -212,6 +214,6 @@ btnC.addEventListener("click", function(){
   v2 = 0
   v1 = 0
   initialValue = "0"
-  show.value = 0
+  showScreen.value = 0
   sign.innerHTML = ""
 })
