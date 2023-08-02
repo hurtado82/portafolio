@@ -1,9 +1,12 @@
+const verde = document.getElementById('verde')
 const celeste = document.getElementById('celeste')
 const violeta = document.getElementById('violeta')
 const naranja = document.getElementById('naranja')
-const verde = document.getElementById('verde')
 const btnEmpezar = document.getElementById('btnEmpezar')
+const metaMarcador = document.getElementById('meta-marcador')
+const nivelMarcador = document.getElementById('nivel-marcador')
 const ULTIMO_NIVEL = 10
+metaMarcador.innerHTML = ULTIMO_NIVEL
 
 
 
@@ -16,6 +19,7 @@ class Juego {
   }
   inicializar() {
     this.siguienteNivel = this.siguienteNivel.bind(this); //bind enlaza this con el objeto de la clase no permite modificarlo
+    nivelMarcador.innerHTML = 1
     this.elegirColor = this.elegirColor.bind(this);
     this.toggleBtnEmpezar();
     this.nivel = 1;
@@ -82,7 +86,7 @@ class Juego {
   iluminarSecuencia() {
     for (let i = 0; i < this.nivel; i++) {
       const color = this.transformarNumeroAColor(this.secuencia[i]);
-      setTimeout(() => this.iluminarColor(color), 1000 * i);
+      setTimeout(() => this.iluminarColor(color), 600 * i);
     }
   }
 
@@ -115,6 +119,7 @@ class Juego {
       this.subNivel++;
       if (this.subNivel === this.nivel) {
         this.nivel++;
+        nivelMarcador.innerHTML = this.nivel
         this.eliminarEventosClick();
 
         if (this.nivel === ULTIMO_NIVEL + 1) {

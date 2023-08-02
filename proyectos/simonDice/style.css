@@ -6,6 +6,17 @@ body {
   height: 100vh;
 }
 
+#marcador {
+  font-weight: bold;
+  font-size: 20px;
+  position: fixed;
+  top: 15px;
+}
+
+#marcador p {
+  margin: 0;
+  margin-bottom: 10px; 
+}
 .gameboard {
   height: 100vh;
   width: 100vh;
@@ -33,6 +44,7 @@ body {
 
 .celeste {
   background: #22a6b3;
+  /* position: relative; */
 }
 
 .celeste.light {
