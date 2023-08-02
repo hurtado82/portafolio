@@ -129,7 +129,11 @@ class Juego {
   }
 
   perdioElJuego() {
-    swal("", "Lo lamento perdiste :(", "error").then(this.inicializar());
+    swal("", "Lo lamento perdiste :(", "error").then(
+      this.eliminarEventosClick(),
+      this.generarSecuencia(),
+      this.inicializar(),
+      );
   }
 }
 
